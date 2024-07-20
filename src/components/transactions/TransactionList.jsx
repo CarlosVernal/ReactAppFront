@@ -10,11 +10,11 @@ function TransactionList() {
         {transactions.map((transaction) => (
           <div key={transaction.id}>
             <p>{transaction.category}</p>
-            <span>{transaction.amout}</span>
+            <span>{transaction.amount}</span>
             <button
               onClick={() => {
-                deleteTransaction(transaction.id)
-            }}
+                deleteTransaction(transaction.id);
+              }}
             >
               X
             </button>
