@@ -1,9 +1,9 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
   //estado incial del useReducer
-  transactions: [], //propiedad o clave que contiene un array o lista vacia
+  transactions: [], //propiedad, clave o key que contiene un array o lista vacia
 };
 
 export const Context = createContext(); // Crea y exporta un objeto Context que proporciona un "Provider" para suministrar un valor y un "Consumer" (aunque no se usa explícitamente) para acceder a ese valor
@@ -17,8 +17,17 @@ export const useGlobalState = () => {
 export const GlobalProvider = ({ children }) => {
   // Componente que envolverá a otros y proporcionará el contexto a los componentes hijos (children)
 
-  const [state, action] = useReducer(AppReducer, initialState);
+  const [state, action] = useReducer(AppReducer, initialState, () => {
+    const localData = localStorage.getItem("transactions"); //esto se guarda en un string '[{id:1, category:.....}]'
+    return localData
+      ? JSON.parse(localData) /*lo convierte a json */
+      : initialState /*{transactions:[]}*/;
+  });
   //useReducer -> es ideal para manejar estados más complejos y transiciones de estado basadas en acciones.
+
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(state));
+  }, [state]);
 
   const addTransaction = (transaction) => {
     // Función que crea una acción para agregar una transacción al estado

@@ -16,21 +16,26 @@ function TransactionForm() {
   };
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}
+      className="">
         <input
+          className="py-2 px-3 bg-zinc-600 text-white block my-2 rounded-lg w-full"
           id="category"
           type="text"
           placeholder="Category"
           onChange={(e) => setCategory(e.target.value)}
         />
         <input
+          className="py-2 px-3 bg-zinc-600 text-white block my-2 rounded-lg w-full"
           id="amount"
           type="number"
           step={0.1}
           placeholder="0.00"
           onChange={(e) => setAmount(e.target.value)}
         />
-        <button>Add Transaction</button>
+        <button
+          className="py-2 px-3 mb-2 block my-2 rounded-lg w-full bg-yellow-500 text-black  "
+          >Add Transaction</button>
       </form>
     </div>
   );

@@ -8,7 +8,8 @@ export default (state, action) => {
     case "DEL_TRANSACTION":
       return {
         ...state,
-        transactions: state.transactions.filter( //actualiza la propiedad transaction del estado con un nuevo array
+        transactions: state.transactions.filter(
+          //actualiza la propiedad transaction del estado con un nuevo array
           (transaction) => transaction.id != action.payload //true para todos los que NO coinciden
           // Filtra el array de transacciones para eliminar la transacción cuyo ID coincide con el ID en action.payload
         ),
