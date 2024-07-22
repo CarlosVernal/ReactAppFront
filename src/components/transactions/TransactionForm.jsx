@@ -15,6 +15,7 @@ function TransactionForm() {
     //amount: +amount -> convierte el valor de amount en un numero aunque reciva un string "200"
     setAmount("");
     setCategory("");
+    location.reload()
   };
   return (
     <div>
