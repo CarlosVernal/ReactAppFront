@@ -4,7 +4,6 @@ import { useGlobalState } from "../../context/GlobalState";
 function TransactionForm() {
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
-  //useState para estados simples
   const { addTransaction } = useGlobalState();
 
   const onSubmit = (e) => {
